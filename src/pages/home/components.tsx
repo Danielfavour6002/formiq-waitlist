@@ -77,6 +77,8 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
   React.useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -87,6 +89,7 @@ export const Navbar: React.FC = () => {
 
   const handleJoinBeta = (e: React.MouseEvent) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false); // Close mobile menu if open
     if (location.pathname !== '/') {
       navigate('/#formiq-waitlist');
     } else {
@@ -110,20 +113,20 @@ export const Navbar: React.FC = () => {
           <img
             src={formiqLogo}
             alt="Formiq Logo"
-            style={{ height: '160px', width: 'auto', objectFit: 'contain', marginTop: '-40px', marginBottom: '-40px', flexShrink: 0 }}
+            style={{ height: '160px', width: 'auto', objectFit: 'contain', marginTop: '-40px', marginBottom: '-40px', marginLeft: '-16px', flexShrink: 0 }}
             className="invert hue-rotate-180"
           />
         </Link>
 
-        {/* Nav links - centered */}
+        {/* Desktop Nav links - centered */}
         <nav className="hidden md:flex items-center gap-8" style={{ lineHeight: '80px' }}>
           <Link to="/" className="text-foreground-700 hover:text-primary-600 transition font-medium leading-none">Home</Link>
           <Link to="/privacy" className="text-foreground-700 hover:text-primary-600 transition font-medium leading-none">Privacy Policy</Link>
           <Link to="/terms" className="text-foreground-700 hover:text-primary-600 transition font-medium leading-none">Terms</Link>
         </nav>
 
-        {/* CTA button */}
-        <div className="flex-shrink-0">
+        {/* CTA button (Desktop) */}
+        <div className="hidden md:flex flex-shrink-0">
           <button
             onClick={handleJoinBeta}
             className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-xl transition shadow-md hover:shadow-lg cursor-pointer"
@@ -131,7 +134,30 @@ export const Navbar: React.FC = () => {
             Join Beta
           </button>
         </div>
+
+        {/* Mobile menu toggle */}
+        <button 
+          className="md:hidden flex items-center justify-center text-foreground-900 text-3xl focus:outline-none"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <i className={isMobileMenuOpen ? "ri-close-line" : "ri-menu-3-line"}></i>
+        </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white border-b border-background-200 shadow-lg px-6 py-6 flex flex-col gap-6 animate-in slide-in-from-top-2 duration-200">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground-800 text-lg font-medium hover:text-primary-600">Home</Link>
+          <Link to="/privacy" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground-800 text-lg font-medium hover:text-primary-600">Privacy Policy</Link>
+          <Link to="/terms" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground-800 text-lg font-medium hover:text-primary-600">Terms</Link>
+          <button
+            onClick={handleJoinBeta}
+            className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl transition shadow-md w-full mt-2"
+          >
+            Join Beta
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
