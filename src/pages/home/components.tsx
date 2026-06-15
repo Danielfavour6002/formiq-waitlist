@@ -166,7 +166,11 @@ export const HeroSection: React.FC = () => {
     } catch (err: any) {
       console.error('Waitlist error:', err);
       setStatus('error');
-      setMessage('Something went wrong. Please try again.');
+      if (err.code === '23505' || (err.message && err.message.toLowerCase().includes('duplicate'))) {
+        setMessage('This email is already on the waitlist!');
+      } else {
+        setMessage('Something went wrong. Please try again.');
+      }
     }
   };
 
