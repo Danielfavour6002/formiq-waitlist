@@ -113,7 +113,7 @@ export const Navbar: React.FC = () => {
           <img
             src={formiqIcon}
             alt="Formiq Icon"
-            className="h-10 w-auto object-contain flex-shrink-0"
+            className="h-10 w-auto object-contain flex-shrink-0 rounded-xl"
           />
           <span className="text-foreground-950 font-black text-3xl tracking-tight mt-1">formiq</span>
         </Link>
@@ -418,7 +418,7 @@ export const FooterSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <img src={formiqIcon} alt="Formiq Icon" className="h-10 w-auto object-contain flex-shrink-0" />
+            <img src={formiqIcon} alt="Formiq Icon" className="h-10 w-auto object-contain flex-shrink-0 rounded-xl" />
             <span className="text-foreground-950 font-black text-3xl tracking-tight mt-1">formiq</span>
           </Link>
           <p className="text-xs text-foreground-500 mt-2">
