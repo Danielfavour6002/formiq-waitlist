@@ -8,7 +8,7 @@ import heroPoster from '../../../Coaching Screen.png';
 import coachingImg from '../../../Coaching Screen.png';
 import dashboardImg from '../../../Dashboard.png';
 import summaryImg from '../../../Session Summary.png';
-import formiqLogo from '../../../formiq logo.png';
+import formiqIcon from '../../../formiq icon.png';
 
 // PhoneMockup component
 interface PhoneMockupProps {
@@ -109,13 +109,13 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-8 flex flex-row items-center justify-between" style={{ height: '80px' }}>
         {/* Logo */}
-        <Link to="/" className="flex-shrink-0 flex items-center" style={{ height: '80px' }}>
+        <Link to="/" className="flex-shrink-0 flex items-center gap-2" style={{ height: '80px', marginLeft: '-16px' }}>
           <img
-            src={formiqLogo}
-            alt="Formiq Logo"
-            style={{ height: '160px', width: 'auto', objectFit: 'contain', marginTop: '-40px', marginBottom: '-40px', marginLeft: '-16px', flexShrink: 0 }}
-            className="invert hue-rotate-180"
+            src={formiqIcon}
+            alt="Formiq Icon"
+            className="h-10 w-auto object-contain flex-shrink-0"
           />
+          <span className="text-foreground-950 font-black text-3xl tracking-tight mt-1">formiq</span>
         </Link>
 
         {/* Desktop Nav links - centered */}
@@ -417,10 +417,11 @@ export const FooterSection: React.FC = () => {
       {/* Main footer contents */}
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <Link to="/" className="flex items-center">
-            <img src={formiqLogo} alt="Formiq Logo" className="h-20 md:h-24 object-contain invert hue-rotate-180" />
+          <Link to="/" className="flex items-center gap-2">
+            <img src={formiqIcon} alt="Formiq Icon" className="h-10 w-auto object-contain flex-shrink-0" />
+            <span className="text-foreground-950 font-black text-3xl tracking-tight mt-1">formiq</span>
           </Link>
-          <p className="text-xs text-foreground-500">
+          <p className="text-xs text-foreground-500 mt-2">
             Privacy first. No data sold. No cloud required.
           </p>
         </div>
